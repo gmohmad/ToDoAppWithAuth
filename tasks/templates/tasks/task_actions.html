@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    {% include 'navbar.html' %}
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+</div>
+</div>
+{% endblock %}

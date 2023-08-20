@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% include 'navbar.html' %}
+
+    <h3>Your have {{count}} incomplete task{{count|pluralize:"s"}}</h3>
+    <a href="{% url 'task-create' %}">Add Task +</a>
+    <form method="get" action="">
+        <input type="text" placeholder="Search for tasks" name="q" value="{{q}}">
+        <input type="submit">
+    </form>
+    <div>
+        {% for task in tasks %}
+        <div style="{% if task.is_complete %}background: green;{% endif %}">
+            <hr>
+            <a href="{% url 'task' task.id %}">View</a>
+            <a href="{% url 'task-update' task.id %}">Update</a>
+            <a href="{% url 'task-delete' task.id %}">Delete</a>
+
+
+            <p>{{task.name}}</p>
+            <small>{{task.is_complete}}</small>
+            <hr>
+        </div>
+        {% empty %}
+        <a href="{% url 'home' %}">All</a>
+        <p>Nothing here...</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

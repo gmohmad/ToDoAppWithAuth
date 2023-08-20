@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% include 'navbar.html' %}
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete this task?</p>
+        <a href="{% url 'home' %}">Back</a>
+        <input type="submit">
+    </form>
+</div>
+</div>
+{% endblock %}

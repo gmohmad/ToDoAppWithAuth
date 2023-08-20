@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    {% include 'navbar.html' %}
+    <a href="{% url 'task-update' task.id %}">Edit</a>
+<div>
+    <hr>
+
+    <h3>{{task.name}}</h3>
+    <h5>{{task.description}}</h5>
+    <small>{{task.is_complete}}</small>
+    <p>{{task.created|timesince}}</p>
+    <hr>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    {% include 'navbar.html' %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {% for field in form %}
+        <p>{{field.label}}</p>
+        {{field}}
+        {% endfor %}
+        <input type="submit" >
+    </form>
+    <p>Dont have an account? <a href="{% url 'login' %}">Log In</a></p>
+</div>
+{% endblock %}
